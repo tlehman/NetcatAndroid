@@ -11,4 +11,5 @@ Please leave hateful comments on the code, lambasting me for my poor style and l
 Todo:
  - Implement listen mode
  - Enable non-text data transfer
+ - Add UDP support 
 
