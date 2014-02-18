@@ -8,3 +8,7 @@ At the root of every network program is at least one socket, this app has one st
 
 Please leave hateful comments on the code, lambasting me for my poor style and lack of aesthetic sophistication.
 
+Todo:
+ - Implement listen mode
+ - Enable non-text data transfer
+
