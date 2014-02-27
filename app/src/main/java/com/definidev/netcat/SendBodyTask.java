@@ -10,6 +10,12 @@ import java.lang.Integer;
 import android.os.AsyncTask;
 import android.util.Log;
 
+/**
+ * Created by tlehman at 2014-Feb-13
+ *
+ * This AsyncTask wraps a socket that connects to (ip,port) and writes
+ * the contents of body as a stream of bytes.
+ */
 public class SendBodyTask extends AsyncTask<String, Void, Void> {
 
 	@Override
