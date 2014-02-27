@@ -3,14 +3,14 @@ package com.definidev.netcat;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.ServerSocket;
 import java.net.SocketAddress;
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * Created by tlehman on 2014-Feb-26.
@@ -21,21 +21,21 @@ public class ReceiveBodyTask extends AsyncTask<String, Void, String> {
     @Override
     public String doInBackground(String... args) {
         int port = Integer.parseInt(args[0]);
-        List<Byte> bytes = new ArrayList<Byte>();
+        ServerSocket server;
+        Socket socket;
+        DataInputStream dataInputStream;
+        String body = "";
 
         try {
-            Socket server = new Socket();
-            InetSocketAddress addr = new InetSocketAddress("0.0.0.0", port);
-            server.bind(addr);
-            InputStream stream = server.getInputStream();
+            server = new ServerSocket(port);
+            socket = server.accept();
+            dataInputStream = new DataInputStream(socket.getInputStream());
+            body = dataInputStream.readUTF();
 
-            while(true) {
-                bytes.add((byte)stream.read());
-            }
         } catch (IOException e) {
-            Log.e("IOExceptionTag", e.toString());
+
         }
 
-        return bytes.toString();
+        return body;
     }
 }

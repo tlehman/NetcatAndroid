@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 		final EditText bodyEdit = (EditText)findViewById(R.id.body);
 		
 		final Button sendButton = (Button)findViewById(R.id.send_button);
+        final Button recvButton = (Button)findViewById(R.id.receive_button);
 
 		sendButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -30,6 +31,14 @@ public class MainActivity extends Activity {
 				new SendBodyTask().execute(ip, port, body);
 			}
 		});
+
+        recvButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String port = portEdit.getText().toString();
+                new ReceiveBodyTask().execute(port);
+            }
+        });
 	}
 
 	@Override
