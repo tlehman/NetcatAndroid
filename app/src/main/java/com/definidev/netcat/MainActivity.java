@@ -36,7 +36,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String port = portEdit.getText().toString();
-                new ReceiveBodyTask().execute(port);
+                ReceiveBodyTask task = new ReceiveBodyTask();
+                task.setBodyEdit(bodyEdit);
+                task.execute(port);
             }
         });
 	}
